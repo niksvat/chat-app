@@ -18,7 +18,8 @@ const dev = {
         port: 9090,
         host: "developer.chatapp.com",
         writeToDisk: true,
-        watchContentBase: true
+        watchContentBase: true,
+        historyApiFallback: true, //redirect 404 to index.html - to get rid of error cannot Get /
     }
 
 }
