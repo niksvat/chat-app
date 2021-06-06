@@ -1,12 +1,14 @@
-const webpack = require('webpack');
+
 const path = require('path');
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+
 
 const config = {
 
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, "..", 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].[fullhash].js',
         publicPath: "/"
     },
     module:{
@@ -23,7 +25,10 @@ const config = {
             '.js',
             '.jsx'
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
 
 }
 
