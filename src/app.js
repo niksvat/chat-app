@@ -7,29 +7,29 @@ import {
 } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
+import Box from "@material-ui/core/Box";
+import AboutUs from "./components/aboutUs";
 
 const Chatapp = () => {
 
     return(
-
-        <Router>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/aa">aa</Link>
-            <br />
-            <Switch>
-                <Route exact path="/">Home Content</Route>
-                <Route path="/about">About Content</Route>
-                <Route path="*">No Match</Route>
-            </Switch>
-
-            <Button variant="contained" color="primary">
-              Hello World
-            </Button>
+        <Box>
+            <Router>
 
 
-        </Router>
-        
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <br />
+                <Switch>
+                    <Route exact path="/">Home Content</Route>
+                    <Route path="/about"><AboutUs /></Route>
+                    <Route path="*">No Match</Route>
+                </Switch>
+
+
+                
+            </Router>
+        </Box>
     );
 
 };

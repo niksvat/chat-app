@@ -8,6 +8,9 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 
+import ChatContext from "./context/chatContext";
+import properties from "./utils/properties/en.json";
+
 const App = () => {
 
     return <Chatapp />;
@@ -34,7 +37,9 @@ ReactDom.render(
 
     <Provider store={store}>
         <ThemeProvider theme={theme}>
-            <App />
+            <ChatContext.Provider value={ { properties: properties } }>
+                <App />
+            </ChatContext.Provider>
         </ThemeProvider>
     </Provider>
 
