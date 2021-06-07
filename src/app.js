@@ -1,4 +1,5 @@
 import React from "react";
+import { createUseStyles } from "react-jss";
 import {
     BrowserRouter as Router,
     Switch, 
@@ -6,30 +7,52 @@ import {
     Link
 } from "react-router-dom";
 
-import Button from '@material-ui/core/Button';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AppBar from '@material-ui/core/AppBar';
 import Box from "@material-ui/core/Box";
+
 import AboutUs from "./components/aboutUs";
+import MainArea from "./components/main";
+
+const useStyles = createUseStyles({
+    content: {
+        marginTop: "60px"
+    }
+});
 
 const Chatapp = () => {
 
-    return(
-        <Box>
-            <Router>
+    const classes = useStyles();
 
 
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-                <br />
+
+    return( 
+        <Router>
+
+            <Box>
+                <Route exact path={["/", "/about"]} render={(history)=>(
+                    <AppBar>
+                        <Tabs value={history.location.pathname}>
+                            <Tab value="/" label="home" component={Link} to="/" />
+                            <Tab value="/about" label="about" component={Link} to="/about" />
+                        </Tabs> 
+                    </AppBar>  
+                )}
+                />
+            </Box>
+
+            <Box  className={classes.content} >        
                 <Switch>
-                    <Route exact path="/">Home Content</Route>
-                    <Route path="/about"><AboutUs /></Route>
+                    <Route exact path="/" component={MainArea} />
+                    <Route path="/about" component={AboutUs}  />
                     <Route path="*">No Match</Route>
                 </Switch>
+            </Box>
 
 
-                
-            </Router>
-        </Box>
+        </Router>
+        
     );
 
 };
